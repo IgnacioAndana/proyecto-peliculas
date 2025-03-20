@@ -28,13 +28,19 @@ public class PeliculaController {
         return peliculaList; // Retorna todas las películas
     }
 
-    // Método para obtener una película por su ID
-    @GetMapping("/peliculas/{id}")
-    public Pelicula getPelicula(@PathVariable Long id) {
-        return pelicula.stream()
-                         .filter(pelicula -> pelicula.getId() == id)
-                         .findFirst()
-                         .orElse(null); // Retorna la película por ID, o null si no se encuentra
-    }
+    // // Método para obtener una película por su ID
+    // @GetMapping("/peliculas/{id}")
+    // public Pelicula getPelicula(@PathVariable int id) {
+    //     for (Pelicula pelicula : peliculaList ){
+    //         if(pelicula.getId() == id){
+    //             return pelicula;
+    //         }
+    //     }
+
+    //     // return pelicula.stream()
+    //     //                  .filter(pelicula -> pelicula.getId() == id)
+    //     //                  .findFirst()0
+    //     //                  .orElse(null); // Retorna la película por ID, o null si no se encuentra
+    // }
 
 }
