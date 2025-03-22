@@ -1,4 +1,4 @@
-package com.example.proyecto_peliculas.model;
+package com.example.proyecto_peliculas;
 
 public class Pelicula {
 
@@ -15,10 +15,8 @@ public class Pelicula {
     private String paisOrigen;
     private int recaudacion;
 
-    // Constructor vacío
     public Pelicula() {}
 
-    // Constructor con todos los campos
     public Pelicula(int id, String titulo, String director, int anio, String genero, String sinopsis, int duracion,
                     String clasificacion, String fechaEstreno, double calificacion, String paisOrigen, int recaudacion) {
         this.id = id;

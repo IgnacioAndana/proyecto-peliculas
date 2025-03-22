@@ -1,16 +1,19 @@
-package com.example.proyecto_peliculas.controller;
+package com.example.proyecto_peliculas;
 
-import com.example.proyecto_peliculas.model.Pelicula;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 @RestController
 public class PeliculaController {
 
-    private List<Pelicula> peliculaList = new ArrayList<>(); // Lista de películas predefinidas
+    private List<Pelicula> peliculaList = new ArrayList<>();
 
     public PeliculaController() {
         peliculaList.add(new Pelicula(1, "Interstellar", "Christopher Nolan", 2014, "Sci-Fi", "Un grupo de astronautas viaja por un agujero negro en busca de un nuevo hogar", 169, "PG-13", "2014-11-07", 8.6, "USA", 677471339));
@@ -22,25 +25,24 @@ public class PeliculaController {
 
     }
 
-    // Método para obtener todas las películas
     @GetMapping("/peliculas")
     public List<Pelicula> getPeliculas() {
-        return peliculaList; // Retorna todas las películas
+        return peliculaList; 
     }
 
-    // // Método para obtener una película por su ID
-    // @GetMapping("/peliculas/{id}")
-    // public Pelicula getPelicula(@PathVariable int id) {
-    //     for (Pelicula pelicula : peliculaList ){
-    //         if(pelicula.getId() == id){
-    //             return pelicula;
-    //         }
-    //     }
-
-    //     // return pelicula.stream()
-    //     //                  .filter(pelicula -> pelicula.getId() == id)
-    //     //                  .findFirst()0
-    //     //                  .orElse(null); // Retorna la película por ID, o null si no se encuentra
-    // }
+    @GetMapping("/peliculas/{id}")
+    public ResponseEntity<Object> getId(@PathVariable int id) {
+        return peliculaList.stream()
+            .filter(p -> p.getId() == id)
+            .findFirst()
+            .<ResponseEntity<Object>>map(ResponseEntity::ok)
+            .orElseGet(() -> {
+                Map<String, Object> errorResponse = new HashMap<>();
+                errorResponse.put("status", HttpStatus.NOT_FOUND.value());
+                errorResponse.put("error", "Not Found");
+                errorResponse.put("message", "Película no encontrada");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+            });
+    }   
 
 }
