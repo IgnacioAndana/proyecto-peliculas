@@ -20,7 +20,7 @@ public class PeliculaController {
     public ResponseEntity<List<Pelicula>> getPeliculas() {
         List<Pelicula> peliculas = peliculaService.getPeliculas();
         if (peliculas.isEmpty()) {
-            return ResponseEntity.noContent().build(); // Devuelve 204 si no hay datos
+            return ResponseEntity.noContent().build(); // Devuelve 204 si no hay datos 
         }
         return ResponseEntity.ok(peliculas); // Devuelve 200 con la lista de películas
     }
