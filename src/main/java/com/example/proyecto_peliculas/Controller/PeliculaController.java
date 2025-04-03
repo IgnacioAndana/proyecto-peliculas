@@ -31,4 +31,22 @@ public class PeliculaController {
         return ResponseEntity.ok(pelicula);
     }
 
+    @PostMapping
+    public ResponseEntity<Pelicula> addPelicula(@RequestBody Pelicula pelicula) {
+        Pelicula nuevaPelicula = peliculaService.addPelicula(pelicula);
+        return ResponseEntity.status(201).body(nuevaPelicula); // Devuelve 201 Created
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Pelicula> updatePelicula(@PathVariable int id, @RequestBody Pelicula pelicula) {
+        Pelicula peliculaActualizada = peliculaService.updatePelicula(id, pelicula);
+        return ResponseEntity.ok(peliculaActualizada); // Devuelve 200 OK
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePelicula(@PathVariable int id) {
+        peliculaService.deletePelicula(id);
+        return ResponseEntity.noContent().build(); // Devuelve 204 No Content
+    }
+
 }

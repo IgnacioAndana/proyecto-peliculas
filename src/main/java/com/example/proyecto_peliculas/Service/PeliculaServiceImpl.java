@@ -6,11 +6,8 @@ import com.example.proyecto_peliculas.repository.PeliculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-// import com.example.proyecto_peliculas.Model.Pelicula;
-// import com.example.proyecto_peliculas.repository.PeliculaRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service // Anotación para registrar esta clase como un bean de servicio
 public class PeliculaServiceImpl implements PeliculaService {
@@ -24,17 +21,33 @@ public class PeliculaServiceImpl implements PeliculaService {
         return peliculas;
     }
 
-    // @Override
-    // public Optional<Pelicula> getPeliculaById(int id) {
-    //     return peliculaRepository.findById(id);
-    // }
-
     @Override
     public Pelicula getPeliculaById(int id) {
         return peliculaRepository.findById(id)
             .orElseThrow(() -> new PeliculaNotFoundException("Pelicula no encontrada con el id: " + id));
     }
 
-    // Implementar otros métodos según sea necesario
+    @Override
+    public Pelicula addPelicula(Pelicula pelicula) {
+        return peliculaRepository.save(pelicula);
+    }
+
+    @Override
+    public Pelicula updatePelicula(int id, Pelicula pelicula) {
+        Pelicula peliculaToUpdate = getPeliculaById(id);
+        peliculaToUpdate.setTitulo(pelicula.getTitulo());
+        peliculaToUpdate.setDirector(pelicula.getDirector());
+        peliculaToUpdate.setGenero(pelicula.getGenero());
+        peliculaToUpdate.setAnio(pelicula.getAnio());
+        return peliculaRepository.save(peliculaToUpdate);
+    }
+
+    @Override
+    public Pelicula deletePelicula(int id) {
+        Pelicula pelicula = peliculaRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Pelicula no encontrada con id: " + id));
+        peliculaRepository.deleteById(id);
+        return pelicula;
+    }
 
 }

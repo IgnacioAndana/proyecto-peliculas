@@ -6,7 +6,7 @@ import java.util.List;
 public interface PeliculaService {
     List<Pelicula> getPeliculas();
     Pelicula getPeliculaById(int id); // Tipo de retorno debe ser Pelicula
-    // Pelicula addPelicula(Pelicula pelicula);
-    // Pelicula updatePelicula(int id, Pelicula pelicula);
-    // void deletePelicula(int id);
+    Pelicula addPelicula(Pelicula pelicula);
+    Pelicula updatePelicula(int id, Pelicula pelicula);
+    Pelicula deletePelicula(int id);
 }
