@@ -1,6 +1,7 @@
 package com.example.proyecto_peliculas.Service;
 
 import com.example.proyecto_peliculas.Model.Pelicula;
+import com.example.proyecto_peliculas.exception.PeliculaNotFoundException;
 import com.example.proyecto_peliculas.repository.PeliculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,15 @@ public class PeliculaServiceImpl implements PeliculaService {
         return peliculas;
     }
 
+    // @Override
+    // public Optional<Pelicula> getPeliculaById(int id) {
+    //     return peliculaRepository.findById(id);
+    // }
+
     @Override
-    public Optional<Pelicula> getPeliculaById(int id) {
-        return peliculaRepository.findById(id);
+    public Pelicula getPeliculaById(int id) {
+        return peliculaRepository.findById(id)
+            .orElseThrow(() -> new PeliculaNotFoundException("Pelicula no encontrada con el id: " + id));
     }
 
     // Implementar otros métodos según sea necesario

@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Wallet ###
+/wallet/
+
+### Variables de entorno ###
+.env

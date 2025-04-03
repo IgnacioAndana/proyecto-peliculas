@@ -27,9 +27,8 @@ public class PeliculaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Pelicula> getPeliculaById(@PathVariable int id) {
-        return peliculaService.getPeliculaById(id)
-                .map(ResponseEntity::ok) // Devuelve 200 con la película encontrada
-                .orElse(ResponseEntity.notFound().build()); // Devuelve 404 si no se encuentra
+        Pelicula pelicula = peliculaService.getPeliculaById(id);
+        return ResponseEntity.ok(pelicula);
     }
 
 }
