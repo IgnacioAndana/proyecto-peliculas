@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import com.example.proyecto_peliculas.Model.Pelicula;
 import com.example.proyecto_peliculas.Service.PeliculaService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -44,9 +46,15 @@ public class PeliculaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePelicula(@PathVariable int id) {
-        peliculaService.deletePelicula(id);
-        return ResponseEntity.noContent().build(); // Devuelve 204 No Content
+    public ResponseEntity<Map<String, Object>> deletePelicula(@PathVariable int id) {
+        peliculaService.deletePelicula(id); // Llama al servicio para eliminar la película
+    
+        // Construye la respuesta JSON
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("message", "Registro con id " + id + " eliminado exitosamente.");
+    
+        return ResponseEntity.ok(response); // Devuelve 200 OK con el JSON
     }
 
 }

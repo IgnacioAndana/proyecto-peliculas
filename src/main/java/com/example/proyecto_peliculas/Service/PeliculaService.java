@@ -8,5 +8,5 @@ public interface PeliculaService {
     Pelicula getPeliculaById(int id); // Tipo de retorno debe ser Pelicula
     Pelicula addPelicula(Pelicula pelicula);
     Pelicula updatePelicula(int id, Pelicula pelicula);
-    Pelicula deletePelicula(int id);
+    void deletePelicula(int id);
 }
