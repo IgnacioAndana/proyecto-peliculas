@@ -1,4 +1,4 @@
-package com.example.proyecto_peliculas.exception;
+package com.example.proyecto_peliculas.Exception;
 
 public class PeliculaNotFoundException extends RuntimeException {
     public PeliculaNotFoundException(String message) {

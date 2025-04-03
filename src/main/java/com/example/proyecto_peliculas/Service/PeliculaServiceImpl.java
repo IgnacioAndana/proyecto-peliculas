@@ -1,7 +1,7 @@
 package com.example.proyecto_peliculas.Service;
 
 import com.example.proyecto_peliculas.Model.Pelicula;
-import com.example.proyecto_peliculas.exception.PeliculaNotFoundException;
+import com.example.proyecto_peliculas.Exception.PeliculaNotFoundException;
 import com.example.proyecto_peliculas.repository.PeliculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
