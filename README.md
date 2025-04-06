@@ -1,5 +1,5 @@
 # Peliculas
-Proyecto Spring Boot con Películas - Exp1_S4_Ignacio_Andana
+Proyecto Spring Boot con Películas - Exp2_S4_Ignacio_Andana
 
 ## Descripción
 Este proyecto es un API Rest de películas, diseñado para aprender los conceptos básicos de Spring Boot. Permite realizar operaciones de consulta sobre una lista de películas almacenada en una base de datos autonoma de SQL Oracle, especificamente en la tabla PELICULA.
