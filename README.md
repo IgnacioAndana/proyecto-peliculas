@@ -1,12 +1,15 @@
 # Peliculas
-Proyecto Spring Boot con Películas - Exp1_S2_Ignacio_Andana
+Proyecto Spring Boot con Películas - Exp1_S4_Ignacio_Andana
 
 ## Descripción
-Este proyecto es un API Rest de películas, diseñado para aprender los conceptos básicos de Spring Boot. Permite realizar operaciones de consulta sobre una lista de películas almacenada en memoria utilizando un ArrayList con datos predefinidos.
+Este proyecto es un API Rest de películas, diseñado para aprender los conceptos básicos de Spring Boot. Permite realizar operaciones de consulta sobre una lista de películas almacenada en una base de datos autonoma de SQL Oracle, especificamente en la tabla PELICULA.
 
 ## Funcionalidades
-- GET /peliculas: Obtiene todas las películas de la lista creada en memoria.
-- GET /peliculas/{id}: Obtiene una película de la lista en memoria por su id.
+- GET /peliculas: Obtiene todas los registros de películas.
+- GET /peliculas/{id}: Obtiene una película especifica.
+- POST /peliculas: Inserta un registro de pelicula.
+- PUT /peliculas/{id}: Actualiza un registro de pelicula especifica.
+- DELETE /peliculas/{id}: Elimina un registro de pelicula especifica.
 
 ## Tecnologías
 - Java 21
