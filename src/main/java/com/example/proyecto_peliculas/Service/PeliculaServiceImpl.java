@@ -43,11 +43,12 @@ public class PeliculaServiceImpl implements PeliculaService {
     }
 
     @Override
-    public void deletePelicula(int id) {
+    public boolean deletePelicula(int id) {
         if (!peliculaRepository.existsById(id)) {
-            throw new PeliculaNotFoundException("Pelicula no encontrada con id: " + id);
+            return false;
         }
         peliculaRepository.deleteById(id);
+        return true;
     }
 
 }

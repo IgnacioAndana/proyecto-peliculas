@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 class PeliculaServiceImplTest {
@@ -114,11 +115,10 @@ class PeliculaServiceImplTest {
     void testDeletePeliculaNotFound() {
         when(peliculaRepository.existsById(99)).thenReturn(false);
 
-        PeliculaNotFoundException exception = assertThrows(PeliculaNotFoundException.class, () -> {
-            peliculaService.deletePelicula(99);
-        });
+        boolean resultado = peliculaService.deletePelicula(99);
 
-        assertEquals("Pelicula no encontrada con id: 99", exception.getMessage());
+        assertFalse(resultado);
+
         verify(peliculaRepository, never()).deleteById(99);
     }
 }
